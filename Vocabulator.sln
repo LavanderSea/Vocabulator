@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vocabulator", "Vocabulator\Vocabulator.csproj", "{A7725234-540C-4FA0-AC14-62B5FC95DFE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabulatorTests", "VocabulatorTests\VocabulatorTests.csproj", "{3367386E-A27F-4F44-99C2-67ABB35871BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2D40224-2163-4D2B-B577-7EADD17AA5C2}
+	EndGlobalSection
+EndGlobal
