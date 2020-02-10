@@ -39,12 +39,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StartWindowForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartWindowForm.Designer.cs">
-      <DependentUpon>StartWindowForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="WindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,8 +57,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StartWindowForm.resx">
-      <DependentUpon>StartWindowForm.cs</DependentUpon>
+    <EmbeddedResource Include="WindowForm.resx">
+      <DependentUpon>WindowForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

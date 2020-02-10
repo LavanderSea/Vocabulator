@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using VocabulatorLibrary;
+using VocabulatorLibrary.Dictionaries.WordApi;
 
 namespace Vocabulator
 {
@@ -13,7 +15,7 @@ namespace Vocabulator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartWindowForm());
+            Application.Run(new WindowForm(new UserFacade(new DictionaryClient(new ResponseParser()))));
         }
     }
 }

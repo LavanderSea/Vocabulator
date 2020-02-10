@@ -10,41 +10,25 @@ namespace Vocabulator
 {
     public partial class WindowForm : Form
     {
-        public WindowForm(UserFacade userFacade, Action showMenu, string inputPath, string outputPath)
+        private readonly List<Word> _resultsWords;
+        private readonly UserFacade _userFacade;
+        private string _inputPath;
+        private string _outputPath;
+        private WordDto _wordDto;
+        private IEnumerator<IDto> _words;
+
+        public WindowForm(UserFacade userFacade)
         {
             _userFacade = userFacade;
-            _showMenu = showMenu;
-            _outputPath = outputPath;
             _resultsWords = new List<Word>();
-            _words = userFacade.GetDtoCollection(File.ReadLines(inputPath)).GetEnumerator();
             InitializeComponent();
-        }
-
-        private void DefinitionsButton_Click(object sender, EventArgs e)
-        {
-            if (_isAcceptButtonActive)
-            {
-                if (Definitions.SelectedItem == null)
-                    return;
-                Definition.Text = Definitions.SelectedItem.ToString();
-                LoadOtherFields(Definitions.SelectedIndex);
-            }
-
-            _isAcceptButtonActive = !_isAcceptButtonActive;
-            SwapButton(_isAcceptButtonActive);
         }
 
         private void ToMenuButton_Click(object sender, EventArgs e)
         {
             _userFacade.CreateResultFile(_resultsWords, _outputPath);
-            _showMenu();
-            Close();
-        }
-
-        private void SwapButton(bool isSwapToAccept)
-        {
-            Definitions.SelectionMode = isSwapToAccept ? SelectionMode.One : SelectionMode.None;
-            DefinitionsButton.Text = isSwapToAccept ? "Accept" : "Back";
+            wordPanel.Visible = false;
+            startPanel.Visible = true;
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -63,10 +47,7 @@ namespace Vocabulator
                     Examples.SelectedItem?.ToString() ?? string.Empty));
             }
 
-            _isAcceptButtonActive = true;
             Clear();
-            SwapButton(true);
-            _words.MoveNext();
             ChangeSelectedWord();
         }
 
@@ -76,7 +57,6 @@ namespace Vocabulator
 
             if (_words.Current == null)
             {
-                DefinitionsButton.Visible = false;
                 NextButton.Visible = false;
                 return;
             }
@@ -105,6 +85,7 @@ namespace Vocabulator
 
             PartOfSpeech.Text = result.PartOfSpeech;
             Transcription.Text = _wordDto.Pronunciation;
+            Examples.Items.Clear();
             Examples.Items.AddRange(examples);
         }
 
@@ -118,15 +99,47 @@ namespace Vocabulator
             Examples.Items.Clear();
         }
 
-        private void WindowForm_Load(object sender, EventArgs e) => ChangeSelectedWord();
+        private void InputFileSelectButton_Click(object sender, EventArgs e)
+        {
+            using (var dialog = openFileDialog)
+            {
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
 
+                _inputPath = dialog.FileName;
+            }
 
-        private bool _isAcceptButtonActive = true;
-        private WordDto _wordDto;
-        private readonly UserFacade _userFacade;
-        private readonly Action _showMenu;
-        private readonly string _outputPath;
-        private readonly IEnumerator<IDto> _words;
-        private readonly List<Word> _resultsWords;
+            OutputFileSelectButton.Enabled = true;
+        }
+
+        private void OutputFileSelectButton_Click(object sender, EventArgs e)
+        {
+            using (var dialog = saveFileDialog)
+            {
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+                _outputPath = dialog.FileName;
+            }
+
+            StartButton.Enabled = true;
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            startPanel.Visible = false;
+            wordPanel.Visible = true;
+
+            _words = _userFacade.GetDtoCollection(File.ReadLines(_inputPath)).GetEnumerator();
+            ChangeSelectedWord();
+        }
+
+        private void Definitions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Definitions.SelectedItem == null)
+                return;
+
+            Definition.Text = Definitions.SelectedItem.ToString();
+            LoadOtherFields(Definitions.SelectedIndex);
+        }
     }
 }
