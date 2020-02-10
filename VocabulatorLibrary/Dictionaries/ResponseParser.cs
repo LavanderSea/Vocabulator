@@ -1,29 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using Newtonsoft.Json.Linq;
-using RestSharp;
-using Vocabulator.Models;
+using VocabulatorLibrary.Data;
 
-namespace Vocabulator.Infrastructure
+namespace VocabulatorLibrary.Dictionaries
 {
-    public class DictionaryClient
+    public class ResponseParser
     {
-        public IModel Get(string word)
+        public IDto ParseResponse(string response)
         {
-            var client = new RestClient(DictionaryResource.Url + word);
-            var request = CreateRestRequest();
-            var response = client.Execute(request);
-            var jObject = JObject.Parse(response.Content);
-            return response.StatusCode == HttpStatusCode.BadRequest
-                ? new ErrorModel("Bad request")
-                : ParseResponse(jObject);
-        }
-
-        public IModel ParseResponse(JObject jObject)
-        {
-            IModel model;
+            var jObject = JObject.Parse(response);
+            IDto dto;
             try
             {
                 var results = new List<Result>();
@@ -46,7 +34,7 @@ namespace Vocabulator.Infrastructure
                     pronunciation = jObject["pronunciation"].ToString();
                 }
 
-                model = new WordModel(
+                dto = new WordDto(
                     pronunciation,
                     results,
                     jObject["word"].ToString(),
@@ -55,18 +43,10 @@ namespace Vocabulator.Infrastructure
             catch (Exception exception)
                 when (exception is ArgumentNullException || exception is NullReferenceException)
             {
-                model = new ErrorModel(jObject["message"].ToString());
+                dto = new ErrorDto(jObject["message"].ToString());
             }
 
-            return model;
-        }
-
-        private RestRequest CreateRestRequest()
-        {
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("x-rapidapi-host", "wordsapiv1.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", DictionaryResource.Key);
-            return request;
+            return dto;
         }
     }
 }

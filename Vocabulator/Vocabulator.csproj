@@ -33,46 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExcelApi, Version=1.7.4.6, Culture=neutral, PublicKeyToken=9084b9221296229e, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOfficeFw.Excel.1.7.4.6\lib\net40\ExcelApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="NetOffice, Version=1.7.4.6, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOfficeFw.Core.1.7.4.6\lib\net40\NetOffice.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="OfficeApi, Version=1.7.4.6, Culture=neutral, PublicKeyToken=a39beb0835c43c8e, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOfficeFw.Core.1.7.4.6\lib\net40\OfficeApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="VBIDEApi, Version=1.7.4.6, Culture=neutral, PublicKeyToken=931cec8882205047, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOfficeFw.Core.1.7.4.6\lib\net40\VBIDEApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\DictionaryResource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DictionaryResource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Infrastructure\Const.cs" />
-    <Compile Include="Infrastructure\DictionaryClient.cs" />
-    <Compile Include="WordExtenstion.cs" />
-    <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Infrastructure\ExcelRepository.cs" />
-    <Compile Include="Models\Word.cs" />
-    <Compile Include="UserFacade.cs" />
     <Compile Include="StartWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,15 +51,8 @@
     <Compile Include="WindowForm.Designer.cs">
       <DependentUpon>WindowForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\IModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Result.cs" />
-    <Compile Include="Models\WordModel.cs" />
-    <EmbeddedResource Include="Infrastructure\DictionaryResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DictionaryResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -106,9 +65,6 @@
     </Compile>
     <EmbeddedResource Include="StartWindowForm.resx">
       <DependentUpon>StartWindowForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WindowForm.resx">
-      <DependentUpon>WindowForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -123,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VocabulatorLibrary\VocabulatorLibrary.csproj">
+      <Project>{06699a7f-a535-40e0-bbc8-4aba95dc2dd6}</Project>
+      <Name>VocabulatorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

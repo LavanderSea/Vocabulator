@@ -1,4 +1,4 @@
-﻿namespace Vocabulator.Models
+﻿namespace VocabulatorLibrary.Data
 {
     public class Word
     {

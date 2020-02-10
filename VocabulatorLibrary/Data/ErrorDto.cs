@@ -1,10 +1,10 @@
-﻿namespace Vocabulator.Models
+﻿namespace VocabulatorLibrary.Data
 {
-    public class ErrorModel : IModel
+    public class ErrorDto : IDto
     {
         public string Message;
 
-        public ErrorModel(string message)
+        public ErrorDto(string message)
         {
             Message = message;
         }

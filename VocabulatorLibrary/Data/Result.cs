@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Vocabulator.Models
+namespace VocabulatorLibrary.Data
 {
     public class Result
     {

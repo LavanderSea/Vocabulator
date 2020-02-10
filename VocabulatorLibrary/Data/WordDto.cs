@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace Vocabulator.Models
+namespace VocabulatorLibrary.Data
 {
-    public class WordModel : IModel
+    public class WordDto : IDto
     {
         public bool IsProcessed;
         public string Pronunciation;
         public IEnumerable<Result> Results;
         public string Word;
 
-        public WordModel(string pronunciation, IEnumerable<Result> results, string word, bool isProcessed)
+        public WordDto(string pronunciation, IEnumerable<Result> results, string word, bool isProcessed)
         {
             Pronunciation = pronunciation;
             Results = results;

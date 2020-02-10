@@ -61,38 +61,11 @@ namespace Vocabulator.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Конец ввода.
-        /// </summary>
-        internal static string ReadingWordEndCaption {
-            get {
-                return ResourceManager.GetString("ReadingWordEndCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Больше слов нет.
         /// </summary>
         internal static string ReadingWordEndText {
             get {
                 return ResourceManager.GetString("ReadingWordEndText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Файл уже существует. Продолжить запись в него?.
-        /// </summary>
-        internal static string WarningMessageText {
-            get {
-                return ResourceManager.GetString("WarningMessageText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Предупреждение.
-        /// </summary>
-        internal static string WarningTitle {
-            get {
-                return ResourceManager.GetString("WarningTitle", resourceCulture);
             }
         }
     }

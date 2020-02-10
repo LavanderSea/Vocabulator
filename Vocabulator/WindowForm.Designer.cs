@@ -40,7 +40,6 @@
             this.NextButton = new System.Windows.Forms.Button();
             this.Transcription = new System.Windows.Forms.Label();
             this.PartOfSpeech = new System.Windows.Forms.Label();
-            this.NecessaryPartOfSpeech = new System.Windows.Forms.Label();
             this.ToMenuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -180,16 +179,6 @@
             this.PartOfSpeech.Tag = "afterDefinitionItemsTag";
             this.PartOfSpeech.Text = "PartOfSpeech";
             // 
-            // NecessaryPartOfSpeech
-            // 
-            this.NecessaryPartOfSpeech.AutoSize = true;
-            this.NecessaryPartOfSpeech.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NecessaryPartOfSpeech.Location = new System.Drawing.Point(9, 36);
-            this.NecessaryPartOfSpeech.Name = "NecessaryPartOfSpeech";
-            this.NecessaryPartOfSpeech.Size = new System.Drawing.Size(166, 19);
-            this.NecessaryPartOfSpeech.TabIndex = 12;
-            this.NecessaryPartOfSpeech.Text = "Necessary part of speech";
-            // 
             // ToMenuButton
             // 
             this.ToMenuButton.BackColor = System.Drawing.Color.Turquoise;
@@ -209,7 +198,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(800, 478);
-            this.Controls.Add(this.NecessaryPartOfSpeech);
             this.Controls.Add(this.PartOfSpeech);
             this.Controls.Add(this.Word);
             this.Controls.Add(this.Transcription);
@@ -228,7 +216,6 @@
             this.Name = "WindowForm";
             this.ShowIcon = false;
             this.Text = "Vocabulator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowForm_FormClosing);
             this.Load += new System.EventHandler(this.WindowForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -249,7 +236,6 @@
         private System.Windows.Forms.Label Transcription;
         private System.Windows.Forms.Label PartOfSpeech;
         private System.Windows.Forms.Button ToMenuButton;
-        private System.Windows.Forms.Label NecessaryPartOfSpeech;
     }
 }
 
