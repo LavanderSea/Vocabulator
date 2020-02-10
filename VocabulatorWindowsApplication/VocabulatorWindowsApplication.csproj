@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A7725234-540C-4FA0-AC14-62B5FC95DFE4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Vocabulator</RootNamespace>
-    <AssemblyName>Vocabulator</AssemblyName>
+    <RootNamespace>VocabulatorWindowsApplication</RootNamespace>
+    <AssemblyName>VocabulatorWindowsApplication</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
