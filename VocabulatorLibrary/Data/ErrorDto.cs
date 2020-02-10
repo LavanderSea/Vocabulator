@@ -2,13 +2,12 @@
 {
     public class ErrorDto : IDto
     {
-        public string Message;
-
         public ErrorDto(string message)
         {
             Message = message;
         }
 
+        public string Message { get; }
         public bool IsStatusSuccess { get; } = false;
     }
 }

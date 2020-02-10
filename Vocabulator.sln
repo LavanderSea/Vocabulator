@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vocabulator", "Vocabulator\Vocabulator.csproj", "{A7725234-540C-4FA0-AC14-62B5FC95DFE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabulatorTests", "VocabulatorTests\VocabulatorTests.csproj", "{3367386E-A27F-4F44-99C2-67ABB35871BC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabulatorWeb", "VocabulatorWeb\VocabulatorWeb.csproj", "{658AA168-9E6D-4376-9C76-13A4EC91B91B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VocabulatorWeb", "VocabulatorWeb\VocabulatorWeb.csproj", "{658AA168-9E6D-4376-9C76-13A4EC91B91B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabulatorLibrary", "VocabulatorLibrary\VocabulatorLibrary.csproj", "{06699A7F-A535-40E0-BBC8-4ABA95DC2DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabulatorTests", "VocabulatorTests\VocabulatorTests.csproj", "{9B11707F-E4F5-43CD-9755-0ABB1E75E543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7725234-540C-4FA0-AC14-62B5FC95DFE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3367386E-A27F-4F44-99C2-67ABB35871BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{658AA168-9E6D-4376-9C76-13A4EC91B91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{658AA168-9E6D-4376-9C76-13A4EC91B91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658AA168-9E6D-4376-9C76-13A4EC91B91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{06699A7F-A535-40E0-BBC8-4ABA95DC2DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06699A7F-A535-40E0-BBC8-4ABA95DC2DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06699A7F-A535-40E0-BBC8-4ABA95DC2DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B11707F-E4F5-43CD-9755-0ABB1E75E543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B11707F-E4F5-43CD-9755-0ABB1E75E543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B11707F-E4F5-43CD-9755-0ABB1E75E543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B11707F-E4F5-43CD-9755-0ABB1E75E543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

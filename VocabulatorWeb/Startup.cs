@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VocabulatorLibrary;
 using VocabulatorLibrary.Dictionaries;
+using VocabulatorWeb.Serializers;
 
 namespace VocabulatorWeb
 {
@@ -24,6 +25,7 @@ namespace VocabulatorWeb
             services.AddSingleton(provider => new ResponseParser());
             services.AddSingleton<IDictionaryClient>(provider =>
                 new DictionaryClient(provider.GetService<ResponseParser>()));
+            services.AddSingleton<ISerializer>(provider => new ResponseSerializer());
             services.AddSingleton(provider => new UserFacade(provider.GetService<IDictionaryClient>()));
         }
 
@@ -40,6 +42,7 @@ namespace VocabulatorWeb
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

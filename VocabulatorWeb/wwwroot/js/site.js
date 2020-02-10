@@ -3,17 +3,33 @@
 
 // Write your JavaScript code.
 
-function readFile(control) {
-    var reader = new FileReader();
+async function loadFile(control) {
+    const  reader = new FileReader();
+    const url = control.baseURI + "next";
 
-    reader.onload = function (event) {
-        var contents = event.target.result;
-        console.log("Содержимое файла: " + contents);
+    reader.onload = async function (event) {
+        const result = await sendRequest(url, event.target.result);
+        alert(result);
     };
 
-    reader.onerror = function (event) {
-        console.error("Файл не может быть прочитан! код " + event.target.error.code);
+    reader.onerror = function(event) {
+        console.error(`Error with file reading. Code: ${event.target.error.code}`);
     };
 
     reader.readAsText(control.files[0]);
+}
+
+async function sendRequest(url, text) {
+
+    const response = await fetch(url,
+        {
+            method: "POST",
+            headers: new Headers({
+                'Content-Type': "application/json",
+                'Accept': "application/json"
+            }),
+            body: JSON.stringify(text)
+        });
+
+    return response.status === 200 ? await response.text() : undefined;
 }

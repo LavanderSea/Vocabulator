@@ -1,6 +1,6 @@
 ﻿namespace VocabulatorLibrary
 {
-    public static class StringExtenstion
+    public static class StringExtension
     {
         public static string ToValidFormat(this string word)
         {

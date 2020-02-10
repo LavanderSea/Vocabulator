@@ -52,7 +52,7 @@
     <Compile Include="Data\IDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Result.cs" />
-    <Compile Include="StringExtenstion.cs" />
+    <Compile Include="StringExtension.cs" />
     <Compile Include="UserFacade.cs" />
     <Compile Include="Data\Word.cs" />
     <Compile Include="Dictionaries\ResponseParser.cs" />

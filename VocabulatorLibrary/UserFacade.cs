@@ -5,6 +5,7 @@ using System.Text;
 using VocabulatorLibrary.Dictionaries;
 using VocabulatorLibrary.Data;
 
+
 namespace VocabulatorLibrary
 {
     public class UserFacade
@@ -16,7 +17,7 @@ namespace VocabulatorLibrary
             _dictionaryClient = dictionaryClient;
         }
 
-        public IEnumerable<IDto> GetModels(IEnumerable<string> words)
+        public IEnumerable<IDto> GetDtos(IEnumerable<string> words)
         {
             var values = words.Select(word => _dictionaryClient.GetWord(word.ToValidFormat()));
             return values;

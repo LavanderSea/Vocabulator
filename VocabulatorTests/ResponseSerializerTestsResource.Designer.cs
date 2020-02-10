@@ -22,14 +22,14 @@ namespace VocabulatorTests {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TestsResource {
+    internal class ResponseSerializerTestsResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TestsResource() {
+        internal ResponseSerializerTestsResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace VocabulatorTests {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VocabulatorTests.TestsResource", typeof(TestsResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VocabulatorTests.ResponseSerializerTestsResource", typeof(ResponseSerializerTestsResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace VocabulatorTests {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на \n\n\njoke.
+        ///   Ищет локализованную строку, похожую на [{&quot;IsProcessed&quot;:false,&quot;Pronunciation&quot;:&quot;\u02C8ro\u028A.b\u0251\u02D0t&quot;,&quot;Results&quot;:[{&quot;Definition&quot;:&quot;test_definition_1&quot;,&quot;Examples&quot;:[],&quot;PartOfSpeech&quot;:&quot;test_pos&quot;},{&quot;Definition&quot;:&quot;test_definition_2&quot;,&quot;Examples&quot;:[&quot;test_example_1&quot;,&quot;test_example_2&quot;],&quot;PartOfSpeech&quot;:&quot;test_pos&quot;}],&quot;Word&quot;:&quot;test_word&quot;,&quot;IsStatusSuccess&quot;:true},{&quot;Message&quot;:&quot;test_message&quot;,&quot;IsStatusSuccess&quot;:false}].
         /// </summary>
-        internal static string StingWithTwoSpaceAndOneWord {
+        internal static string CollectionWithWordDtoAndErrorDtoJson {
             get {
-                return ResourceManager.GetString("StingWithTwoSpaceAndOneWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на joke\n\nlow.
-        /// </summary>
-        internal static string StringWithSpaceBetweenTwoWords {
-            get {
-                return ResourceManager.GetString("StringWithSpaceBetweenTwoWords", resourceCulture);
+                return ResourceManager.GetString("CollectionWithWordDtoAndErrorDtoJson", resourceCulture);
             }
         }
     }

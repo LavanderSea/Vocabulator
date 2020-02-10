@@ -4,11 +4,6 @@ namespace VocabulatorLibrary.Data
 {
     public class WordDto : IDto
     {
-        public bool IsProcessed;
-        public string Pronunciation;
-        public IEnumerable<Result> Results;
-        public string Word;
-
         public WordDto(string pronunciation, IEnumerable<Result> results, string word, bool isProcessed)
         {
             Pronunciation = pronunciation;
@@ -17,6 +12,10 @@ namespace VocabulatorLibrary.Data
             IsProcessed = isProcessed;
         }
 
+        public bool IsProcessed { get; set; }
+        public string Pronunciation { get; }
+        public IEnumerable<Result> Results { get; }
+        public string Word { get; }
         public bool IsStatusSuccess { get; } = true;
     }
 }
