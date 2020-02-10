@@ -17,17 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ResponseSerializerTestsResource.Designer.cs">
+    <Compile Update="TestsResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ResponseSerializerTestsResource.resx</DependentUpon>
+      <DependentUpon>TestsResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ResponseSerializerTestsResource.resx">
+    <EmbeddedResource Update="TestsResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResponseSerializerTestsResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>TestsResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

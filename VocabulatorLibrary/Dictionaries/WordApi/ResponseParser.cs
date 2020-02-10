@@ -4,14 +4,13 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using VocabulatorLibrary.Data;
 
-namespace VocabulatorLibrary.Dictionaries
+namespace VocabulatorLibrary.Dictionaries.WordApi
 {
-    public class ResponseParser
+    public class ResponseParser : IParser
     {
-        public IDto ParseResponse(string response)
+        public IDto Parse(string response)
         {
             var jObject = JObject.Parse(response);
-            IDto dto;
             try
             {
                 var results = new List<Result>();
@@ -34,7 +33,7 @@ namespace VocabulatorLibrary.Dictionaries
                     pronunciation = jObject["pronunciation"].ToString();
                 }
 
-                dto = new WordDto(
+                return new WordDto(
                     pronunciation,
                     results,
                     jObject["word"].ToString(),
@@ -43,10 +42,8 @@ namespace VocabulatorLibrary.Dictionaries
             catch (Exception exception)
                 when (exception is ArgumentNullException || exception is NullReferenceException)
             {
-                dto = new ErrorDto(jObject["message"].ToString());
+                return new ErrorDto(jObject["message"].ToString());
             }
-
-            return dto;
         }
     }
 }

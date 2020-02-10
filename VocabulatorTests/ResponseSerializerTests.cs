@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using VocabulatorLibrary.Data;
 using VocabulatorWeb.Serializers;
-using Resource = VocabulatorTests.ResponseSerializerTestsResource;
 
 namespace VocabulatorTests
 {
@@ -45,7 +44,7 @@ namespace VocabulatorTests
 
             var result = _serializer.Serialize(dtoCollection);
 
-            var expected = Resource.CollectionWithWordDtoAndErrorDtoJson;
+            var expected = TestsResource.CollectionWithWordDtoAndErrorDtoJson;
             Assert.AreEqual(expected, result);
         }
 

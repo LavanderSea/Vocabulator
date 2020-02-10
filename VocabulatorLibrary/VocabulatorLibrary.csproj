@@ -41,7 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionaries\DictionaryClient.cs" />
+    <Compile Include="Dictionaries\WordApi\DictionaryClient.cs" />
     <Compile Include="Dictionaries\DictionaryResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -50,12 +50,15 @@
     <Compile Include="Data\ErrorDto.cs" />
     <Compile Include="Dictionaries\IDictionaryClient.cs" />
     <Compile Include="Data\IDto.cs" />
+    <Compile Include="Dictionaries\IParser.cs" />
+    <Compile Include="Dictionaries\MerriamWebster\DictionaryClient.cs" />
+    <Compile Include="Dictionaries\MerriamWebster\ResponseParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="StringExtension.cs" />
     <Compile Include="UserFacade.cs" />
     <Compile Include="Data\Word.cs" />
-    <Compile Include="Dictionaries\ResponseParser.cs" />
+    <Compile Include="Dictionaries\WordApi\ResponseParser.cs" />
     <Compile Include="Data\WordDto.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VocabulatorLibrary;
 using VocabulatorLibrary.Dictionaries;
+using VocabulatorLibrary.Dictionaries.MerriamWebster;
 using VocabulatorWeb.Serializers;
 
 namespace VocabulatorWeb

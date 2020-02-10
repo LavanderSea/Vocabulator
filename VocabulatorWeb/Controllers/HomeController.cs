@@ -29,15 +29,22 @@ namespace VocabulatorWeb.Controllers
         }
 
         [HttpPost]
+        [Route("/words")]
+        public IActionResult WordView()
+        {
+            return View();
+        }
+
+        [HttpPost]
         [Route("/next")]
         public IActionResult DownloadText([FromBody] string text)
         {
             //TODO: проверка корректности текста
 
             var r = text.Split("\r\n");
-            var dtos = _userFacade.GetDtos(r);
+            var dtoCollection = _userFacade.GetDtoCollection(r);
 
-            var jsonString = _responseSerializer.Serialize(dtos);
+            var jsonString = _responseSerializer.Serialize(dtoCollection);
             var response = jsonString.ConvertFromUnicode();
 
             return Ok($"{response}");

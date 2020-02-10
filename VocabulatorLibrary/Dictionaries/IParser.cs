@@ -2,8 +2,8 @@
 
 namespace VocabulatorLibrary.Dictionaries
 {
-    public interface IDictionaryClient
+    public interface IParser
     {
-        IDto GetWord(string desiredValue);
+        IDto Parse(string response);
     }
 }

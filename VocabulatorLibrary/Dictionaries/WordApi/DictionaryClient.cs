@@ -2,7 +2,7 @@
 using RestSharp;
 using VocabulatorLibrary.Data;
 
-namespace VocabulatorLibrary.Dictionaries
+namespace VocabulatorLibrary.Dictionaries.WordApi
 {
     public class DictionaryClient : IDictionaryClient
     {
@@ -13,17 +13,17 @@ namespace VocabulatorLibrary.Dictionaries
             _responseParser = responseParser;
         }
 
-        public IDto GetWord(string word)
+        public IDto GetWord(string desiredValue)
         {
-            var client = new RestClient(DictionaryResource.Url + word);
+            var client = new RestClient(DictionaryResource.Url + desiredValue);
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "wordsapiv1.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", DictionaryResource.Key);
             var response = client.Execute(request);
-            var model = _responseParser.ParseResponse(response.Content);
+            var dto = _responseParser.Parse(response.Content);
             return response.StatusCode == HttpStatusCode.BadRequest
                 ? new ErrorDto("Bad request")
-                : model;
+                : dto;
         }
     }
 }

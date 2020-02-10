@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using VocabulatorLibrary;
 using VocabulatorLibrary.Dictionaries;
+using VocabulatorLibrary.Dictionaries.WordApi;
 
 namespace Vocabulator
 {

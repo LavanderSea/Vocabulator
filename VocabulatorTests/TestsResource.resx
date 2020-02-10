@@ -118,6 +118,175 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CollectionWithWordDtoAndErrorDtoJson" xml:space="preserve">
-    <value>[{"IsProcessed":false,"Pronunciation":"\u02C8ro\u028A.b\u0251\u02D0t","Results":[{"Definition":"test_definition_1","Examples":[],"PartOfSpeech":"test_pos"},{"Definition":"test_definition_2","Examples":["test_example_1","test_example_2"],"PartOfSpeech":"test_pos"}],"Word":"test_word","IsStatusSuccess":true},{"Message":"test_message","IsStatusSuccess":false}]</value>
+    <value>[{"IsProcessed":false,"Pronunciation":"\u02C8ro\u028A.b\u0251\u02D0t","Results":[{"Definition":"test_definition_1","Examples":[],"PartOfSpeech":"test_pos"},{"Definition":"test_definition_2","Examples":["test_example_1","test_example_2"],"PartOfSpeech":"test_pos"}],"Word":"test_desiredValue","IsStatusSuccess":true},{"Message":"test_message","IsStatusSuccess":false}]</value>
+  </data>
+  <data name="WordWithTwoDefinitionsJson" xml:space="preserve">
+    <value>[{
+    "meta": {
+      "id": "soap:1",
+      "uuid": "9ec2d3e5-5ac1-49dc-a4d2-070ba77a8e65",
+      "src": "int_dict",
+      "section": "alpha",
+      "stems": [
+        "soap",
+        "soaps"
+      ],
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "soap",
+      "prs": [
+        {
+          "mw": "ˈsōp",
+          "sound": {
+            "audio": "soap0001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a substance that is usually made by the action of alkali on fat, dissolves in water, and is used for washing"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a salt of a fatty acid"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}{sx|soap opera||}"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "substance",
+      "a salt of a fatty acid",
+      "soap opera"
+    ]
+  },
+  {
+    "meta": {
+      "id": "soap:2",
+      "uuid": "c5399560-17ea-43a7-bfbe-b7cd98f33bf6",
+      "src": "int_dict",
+      "section": "alpha",
+      "stems": [
+        "soap",
+        "soaped",
+        "soaping",
+        "soaps"
+      ],
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "soap"
+    },
+    "fl": "verb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to rub soap over or into"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to rub soap over or into"
+    ]
+  },
+  {
+    "meta": {
+      "id": "soap opera",
+      "uuid": "9516aea7-c820-4bbe-88d2-18ee007a97b8",
+      "src": "int_dict",
+      "section": "alpha",
+      "stems": [
+        "soap opera",
+        "soap operas",
+        "soap-operatic"
+      ],
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "soap opera"
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a radio or television drama presented in a series of continuing stories and characters and intended to appeal to the emotions"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "et": [
+      [
+        "text",
+        "so called because the advertisers on these programs were usually soap manufacturers {dx}see {it}Word History{/it} at {dxt|horse opera||}{/dx}"
+      ]
+    ],
+    "shortdef": [
+      "a radio or television drama presented in a series of continuing stories and characters and intended to appeal to the emotions"
+    ]
+  }]</value>
   </data>
 </root>

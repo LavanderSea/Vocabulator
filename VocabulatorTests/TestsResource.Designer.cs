@@ -22,14 +22,14 @@ namespace VocabulatorTests {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResponseSerializerTestsResource {
+    internal class TestsResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResponseSerializerTestsResource() {
+        internal TestsResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace VocabulatorTests {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VocabulatorTests.ResponseSerializerTestsResource", typeof(ResponseSerializerTestsResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VocabulatorTests.TestsResource", typeof(TestsResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,45 @@ namespace VocabulatorTests {
         internal static string CollectionWithWordDtoAndErrorDtoJson {
             get {
                 return ResourceManager.GetString("CollectionWithWordDtoAndErrorDtoJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на [{
+        ///    &quot;meta&quot;: {
+        ///      &quot;id&quot;: &quot;soap:1&quot;,
+        ///      &quot;uuid&quot;: &quot;9ec2d3e5-5ac1-49dc-a4d2-070ba77a8e65&quot;,
+        ///      &quot;src&quot;: &quot;int_dict&quot;,
+        ///      &quot;section&quot;: &quot;alpha&quot;,
+        ///      &quot;stems&quot;: [
+        ///        &quot;soap&quot;,
+        ///        &quot;soaps&quot;
+        ///      ],
+        ///      &quot;offensive&quot;: false
+        ///    },
+        ///    &quot;hom&quot;: 1,
+        ///    &quot;hwi&quot;: {
+        ///      &quot;hw&quot;: &quot;soap&quot;,
+        ///      &quot;prs&quot;: [
+        ///        {
+        ///          &quot;mw&quot;: &quot;ˈsōp&quot;,
+        ///          &quot;sound&quot;: {
+        ///            &quot;audio&quot;: &quot;soap0001&quot;
+        ///          }
+        ///        }
+        ///      ]
+        ///    },
+        ///    &quot;fl&quot;: &quot;noun&quot;,
+        ///    &quot;def&quot;: [
+        ///      {
+        ///        &quot;sseq&quot;: [
+        ///          [
+        ///            [
+        ///          [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string WordWithTwoDefinitionsJson {
+            get {
+                return ResourceManager.GetString("WordWithTwoDefinitionsJson", resourceCulture);
             }
         }
     }

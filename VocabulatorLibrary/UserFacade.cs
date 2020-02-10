@@ -17,7 +17,7 @@ namespace VocabulatorLibrary
             _dictionaryClient = dictionaryClient;
         }
 
-        public IEnumerable<IDto> GetDtos(IEnumerable<string> words)
+        public IEnumerable<IDto> GetDtoCollection(IEnumerable<string> words)
         {
             var values = words.Select(word => _dictionaryClient.GetWord(word.ToValidFormat()));
             return values;

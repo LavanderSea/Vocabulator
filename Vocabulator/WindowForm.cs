@@ -16,7 +16,7 @@ namespace Vocabulator
             _showMenu = showMenu;
             _outputPath = outputPath;
             _resultsWords = new List<Word>();
-            _words = userFacade.GetDtos(File.ReadLines(inputPath)).GetEnumerator();
+            _words = userFacade.GetDtoCollection(File.ReadLines(inputPath)).GetEnumerator();
             InitializeComponent();
         }
 
