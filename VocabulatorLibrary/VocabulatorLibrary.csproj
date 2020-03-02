@@ -41,6 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionaries\Stub\DictionaryClient.cs" />
     <Compile Include="Dictionaries\WordApi\DictionaryClient.cs" />
     <Compile Include="Dictionaries\DictionaryResource.Designer.cs">
       <AutoGen>True</AutoGen>

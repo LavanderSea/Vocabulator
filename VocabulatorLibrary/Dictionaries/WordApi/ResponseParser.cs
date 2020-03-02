@@ -16,7 +16,7 @@ namespace VocabulatorLibrary.Dictionaries.WordApi
                 var results = new List<Result>();
                 foreach (var result in jObject["results"])
                 {
-                    var examples = result["examples"]?.Select(example => example.ToString());
+                    var examples = result["examples"]?.Select(example => example.ToString()) ?? Array.Empty<string>();
                     results.Add(new Result(
                         result["definition"].ToString(),
                         examples,

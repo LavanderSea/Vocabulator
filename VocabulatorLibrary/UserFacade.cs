@@ -2,15 +2,15 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using VocabulatorLibrary.Dictionaries;
 using VocabulatorLibrary.Data;
-
+using VocabulatorLibrary.Dictionaries;
 
 namespace VocabulatorLibrary
 {
     public class UserFacade
     {
         private readonly IDictionaryClient _dictionaryClient;
+        private IEnumerable<string> _words;
 
         public UserFacade(IDictionaryClient dictionaryClient)
         {
@@ -20,7 +20,13 @@ namespace VocabulatorLibrary
         public IEnumerable<IDto> GetDtoCollection(IEnumerable<string> words)
         {
             var values = words.Select(word => _dictionaryClient.GetWord(word.ToValidFormat()));
+
             return values;
+        }
+
+        public IEnumerable<IDto> GetDtoCollection()
+        {
+            return GetDtoCollection(_words);
         }
 
         public void CreateResultFile(IEnumerable<Word> words, string path)
@@ -31,6 +37,10 @@ namespace VocabulatorLibrary
                     writer.WriteLine(
                         $"{word.Value},{word.PartOfSpeech},{word.Transcription},{word.Definition},{word.Example}");
             }
+        }
+        public void SaveWords(IEnumerable<string> words)
+        {
+            _words = words;
         }
     }
 }
