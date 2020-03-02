@@ -1,13 +1,8 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿async function loadFile(control) {
+    const reader = new FileReader();
+    const url = control.baseURI.replace("load", "next");
 
-// Write your JavaScript code.
-
-async function loadFile(control) {
-    const  reader = new FileReader();
-    const url = control.baseURI + "next";
-
-    reader.onload = async function (event) {
+    reader.onload = async function(event) {
         const result = await sendRequest(url, event.target.result);
         alert(result);
     };
@@ -32,4 +27,17 @@ async function sendRequest(url, text) {
         });
 
     return response.status === 200 ? await response.text() : undefined;
+}
+
+async function setDictionaryType(url, type) {
+
+    const response = await fetch(url + "setDictionaryType",
+        {
+            method: "PUT",
+            headers: new Headers({
+                'Content-Type': "application/json",
+                'Accept': "application/json"
+            }),
+            body: JSON.stringify(type)
+        });
 }

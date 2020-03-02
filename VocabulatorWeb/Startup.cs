@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
 using VocabulatorLibrary;
-using VocabulatorLibrary.Dictionaries;
-using VocabulatorLibrary.Dictionaries.MerriamWebster;
-using VocabulatorWeb.Serializers;
+using Dictionaries = VocabulatorLibrary.Dictionaries;
+
 
 namespace VocabulatorWeb
 {
@@ -19,18 +19,34 @@ namespace VocabulatorWeb
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton(provider => new ResponseParser());
-            services.AddSingleton<IDictionaryClient>(provider =>
-                new DictionaryClient(provider.GetService<ResponseParser>()));
-            services.AddSingleton<ISerializer>(provider => new ResponseSerializer());
-            services.AddSingleton(provider => new UserFacade(provider.GetService<IDictionaryClient>()));
+
+            var userFacades = new Dictionary<DictionaryVersion, UserFacade>
+            {
+                {
+                    DictionaryVersion.Test,
+                    new UserFacade(
+                        new Dictionaries.Stub.DictionaryClient())
+                },
+                {
+                    DictionaryVersion.MerriamWebster,
+                    new UserFacade(
+                        new Dictionaries.MerriamWebster.DictionaryClient(
+                            new Dictionaries.MerriamWebster.ResponseParser()))
+                },
+                {
+                    DictionaryVersion.WordApi,
+                    new UserFacade(
+                        new Dictionaries.WordApi.DictionaryClient(
+                            new Dictionaries.WordApi.ResponseParser()))
+                }
+            };
+
+            services.AddSingleton(provider => new UserFacadeFactory(userFacades));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -40,10 +56,9 @@ namespace VocabulatorWeb
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -54,11 +69,9 @@ namespace VocabulatorWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
             });
-
-
         }
     }
 }

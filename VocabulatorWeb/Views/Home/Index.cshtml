@@ -6,6 +6,11 @@
 </head>
 <body>
 <script src="~/js/site.js"></script>
-<input type="file" onchange="readFile(this)" accept="text/plain">
+<a>Choose dictionary</a>
+    <ul>
+        <li><a onclick="setDictionaryType(baseURI, 'mw'); location.href = './load';">Merriam Webster Dictionary</a></li>
+        <li><a onclick="setDictionaryType(baseURI, 'wa'); location.href = './load';">Word Api Dictionary</a></li>
+        <li><a onclick="setDictionaryType(baseURI, 'test'); location.href = './test';">Test Dictionary</a></li>
+    </ul>
 </body>
 </html>

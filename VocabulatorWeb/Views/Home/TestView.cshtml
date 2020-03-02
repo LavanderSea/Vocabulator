@@ -1,0 +1,12 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>TestView</title>
+</head>
+<body>
+<script src="~/js/site.js"></script>
+<button onclick="sendRequest('./next', 'go\r\nwalk\r\ndo').then(alert('Ready'))">Load test words</button>
+<button onclick="location.href = './words'">To words page</button>
+</body>
+</html>

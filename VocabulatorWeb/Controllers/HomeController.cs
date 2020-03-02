@@ -1,53 +1,55 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using VocabulatorLibrary;
-using VocabulatorWeb.Serializers;
+using VocabulatorLibrary.Data;
 
 namespace VocabulatorWeb.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ISerializer _responseSerializer;
-        private readonly UserFacade _userFacade;
-
-        //path = $"temp{_id}.csv";
+        private readonly UserFacadeFactory _userFacadeFactory;
+        private UserFacade _userFacade;
 
         public HomeController(
             ILogger<HomeController> logger,
-            UserFacade userFacade,
-            ISerializer responseSerializer)
+            UserFacadeFactory userFacadeFactory)
         {
             _logger = logger;
-            _userFacade = userFacade;
-            _responseSerializer = responseSerializer;
+            _userFacadeFactory = userFacadeFactory;
         }
+        public IActionResult Index() => View();
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        [Route("/load")]
+        public IActionResult LoadView() => View();
 
-        [HttpPost]
+        [Route("/test")]
+        public IActionResult TestView() => View();
+
         [Route("/words")]
         public IActionResult WordView()
         {
-            return View();
+            _userFacade = _userFacadeFactory.Create();
+            return View(_userFacade.GetDtoCollection());
+        }
+
+        [HttpPut]
+        [Route("/setDictionaryType")]
+        public IActionResult SetUserFacade([FromBody] string type)
+        {
+            _userFacadeFactory.SetType(type);
+            _userFacade = _userFacadeFactory.Create();
+            return Ok();
         }
 
         [HttpPost]
         [Route("/next")]
         public IActionResult DownloadText([FromBody] string text)
         {
-            //TODO: проверка корректности текста
-
-            var r = text.Split("\r\n");
-            var dtoCollection = _userFacade.GetDtoCollection(r);
-
-            var jsonString = _responseSerializer.Serialize(dtoCollection);
-            var response = jsonString.ConvertFromUnicode();
-
-            return Ok($"{response}");
+            _userFacade = _userFacadeFactory.Create();
+            _userFacade.SaveWords(text.Split("\r\n"));
+            return Ok("Ready");
         }
     }
 }
