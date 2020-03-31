@@ -3,8 +3,7 @@
     const url = control.baseURI.replace("load", "next");
 
     reader.onload = async function(event) {
-        const result = await sendRequest(url, event.target.result);
-        alert(result);
+        await sendRequest(url, "POST", event.target.result);
     };
 
     reader.onerror = function(event) {
@@ -14,11 +13,11 @@
     reader.readAsText(control.files[0]);
 }
 
-async function sendRequest(url, text) {
+async function sendRequest(url, method, text) {
 
     const response = await fetch(url,
         {
-            method: "POST",
+            method: method,
             headers: new Headers({
                 'Content-Type': "application/json",
                 'Accept': "application/json"
@@ -30,14 +29,22 @@ async function sendRequest(url, text) {
 }
 
 async function setDictionaryType(url, type) {
-
-    const response = await fetch(url + "setDictionaryType",
-        {
-            method: "PUT",
-            headers: new Headers({
-                'Content-Type': "application/json",
-                'Accept': "application/json"
-            }),
-            body: JSON.stringify(type)
-        });
+    await sendRequest(url + "setDictionaryType", "PUT", type);
 }
+
+async function sendWords(url) {
+    const word =
+        "[{\"value\": \"soap\",\"partOfSpeech\": \"noun\",\"transcription\": \"ˈsōp\",\"definition\": \"test def\",\"example\": \"test example\"}" +
+            ",{\"value\": \"HORSE\",\"partOfSpeech\": \"HORSE\",\"transcription\": \"ˈsōp\",\"definition\": \"test def1\",\"example\": \"test example1\"}]";
+    const text = await sendRequest(url, "POST", word);
+    prepareFileToDownload(text);
+}
+
+function prepareFileToDownload(text) {
+    const resultText = text.substring(1, text.length - 1).replace(/\\r\\n/gi, "\n");
+    const data = new Blob([resultText], { type: "text/plain" });
+    const url = window.URL.createObjectURL(data);
+    document.getElementById("download_link").href = url;
+}
+
+

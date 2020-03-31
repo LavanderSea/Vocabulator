@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using VocabulatorLibrary.Data;
-
-namespace VocabulatorWeb.Serializers
+﻿namespace VocabulatorWeb.Serializers
 {
-    public interface ISerializer
+    public interface ISerializer<T>
     {
-        string Serialize(IEnumerable<IDto> dtoCollection);
+        string Serialize(T item);
     }
 }

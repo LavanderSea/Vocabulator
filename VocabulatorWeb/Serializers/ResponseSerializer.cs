@@ -5,7 +5,7 @@ using VocabulatorLibrary.Data;
 
 namespace VocabulatorWeb.Serializers
 {
-    public class ResponseSerializer : ISerializer
+    public class ResponseSerializer : ISerializer<IEnumerable<IDto>>
     {
         public string Serialize(IEnumerable<IDto> dtoCollection)
         {

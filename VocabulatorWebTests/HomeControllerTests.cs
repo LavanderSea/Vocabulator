@@ -49,7 +49,7 @@ namespace VocabulatorWebTests
                         new VocabulatorLibrary.Dictionaries.Stub.DictionaryClient())
                 }
             });
-            var controller = new HomeController(null, factory);
+            var controller = new HomeController(null, factory, null);
             controller.SetUserFacade("test");
             controller.DownloadText("firstWord\r\nSecondWord");
 

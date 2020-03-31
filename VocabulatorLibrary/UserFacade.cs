@@ -33,11 +33,22 @@ namespace VocabulatorLibrary
         {
             using (var writer = new StreamWriter(path, true, Encoding.UTF8))
             {
-                foreach (var word in words)
-                    writer.WriteLine(
-                        $"{word.Value},{word.PartOfSpeech},{word.Transcription},{word.Definition},{word.Example}");
+                writer.Write(ToCsv(words));
             }
         }
+
+        public string ToCsv(IEnumerable<Word> words)
+        {
+            var sb = new StringBuilder();
+            foreach (var word in words)
+            {
+                sb.AppendLine(
+                    $"{word.Value},{word.PartOfSpeech},{word.Transcription},{word.Definition},{word.Example}");
+            }
+
+            return sb.ToString();
+        }
+
         public void SaveWords(IEnumerable<string> words)
         {
             _words = words;

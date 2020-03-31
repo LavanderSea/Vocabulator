@@ -8,8 +8,8 @@
     <title>WordView</title>
 </head>
 <body>
+<script src="~/js/site.js"></script>
 <table>
-
     @foreach (var dto in Model)
     {
         @if (dto is WordDto word)
@@ -17,26 +17,21 @@
              <tr>
                  <td>
                      <p>@word.Word</p>
+                 </td>
+                 <td>
                      <p>@word.Pronunciation</p>
                  </td>
+                 <td>
+                     <select>
+                         @foreach (var def in word.Results)
+                         {
+                             <option>
+                                 @def.Definition
+                             </option>
+                         }
+                     </select>
+                 </td>
              </tr>
-             @foreach (var def in word.Results)
-              {
-                  <tr>
-                      <td>
-                          <p>@def.Definition</p>
-                      </td>
-                      <td>
-                          <p>@def.PartOfSpeech</p>
-                      </td>
-                      @foreach (var ex in def.Examples)
-                      {
-                          <td>
-                              <p>example: @ex</p>
-                          </td>
-                      }
-                  </tr>
-              }
          }
         @if (dto is ErrorDto error)
          {
@@ -44,5 +39,6 @@
          }
     }
 </table>
+
 </body>
 </html>

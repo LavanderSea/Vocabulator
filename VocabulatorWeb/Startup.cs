@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using VocabulatorLibrary;
+using VocabulatorLibrary.Data;
+using VocabulatorWeb.Serializers;
 using Dictionaries = VocabulatorLibrary.Dictionaries;
 
 
@@ -45,6 +47,7 @@ namespace VocabulatorWeb
             };
 
             services.AddSingleton(provider => new UserFacadeFactory(userFacades));
+            services.AddSingleton<IDeserializer<IEnumerable<Word>>>(provider => new RequestDeserializer());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
