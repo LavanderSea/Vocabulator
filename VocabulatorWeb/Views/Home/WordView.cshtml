@@ -9,36 +9,47 @@
 </head>
 <body>
 <script src="~/js/site.js"></script>
-<table>
-    @foreach (var dto in Model)
-    {
-        @if (dto is WordDto word)
-         {
-             <tr>
-                 <td>
-                     <p>@word.Word</p>
-                 </td>
-                 <td>
-                     <p>@word.Pronunciation</p>
-                 </td>
-                 <td>
-                     <select>
-                         @foreach (var def in word.Results)
-                         {
-                             <option>
-                                 @def.Definition
-                             </option>
-                         }
-                     </select>
-                 </td>
-             </tr>
-         }
-        @if (dto is ErrorDto error)
-         {
-             <tr>error.Message</tr>
-         }
-    }
-</table>
+@{
+    var i = 0;
 
+    <table>
+        @foreach (var dto in Model)
+        {
+            i++;
+            var examplesId = i + "_examples";
+            var defId = i + "_def";
+            var pofId = i + "_pof";
+
+            @if (dto is WordDto word)
+             {
+                 var j = 0;
+                 var partsOfSpeech = word.Results.Select(result => result.PartOfSpeech).ToArray();
+                 var examples = word.Results.Select(result => result.Examples).ToArray();
+                 <tr>
+                     <td>@word.Word</td>
+                     <td>@word.Pronunciation</td>
+                     <td>
+                         @{
+                             <select id=@defId onchange='loadOtherFields(this.value, @i, @Html.Raw(Json.Serialize(partsOfSpeech)), @Html.Raw(Json.Serialize(examples)))'>
+                                 <option value=-1></option>
+                                 @foreach (var def in word.Results)
+                                 {
+                                     <option value=@j>@def.Definition</option>
+                                     j++;
+                                 }
+                             </select>
+                         }
+                     </td>
+                     <td id=@pofId></td>
+                     <td id=@examplesId></td>
+                 </tr>
+             }
+            if (dto is ErrorDto error)
+            {
+                <tr>error.Message</tr>
+            }
+        }
+    </table>
+}
 </body>
 </html>

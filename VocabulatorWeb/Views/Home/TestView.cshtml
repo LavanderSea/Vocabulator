@@ -6,9 +6,9 @@
 </head>
 <body>
 <script src="~/js/site.js"></script>
-<button onclick="sendRequest('./next', 'go\r\nwalk\r\ndo')">Load test words</button>
+<button onclick="sendRequest('./next', 'POST', 'go\r\nwalk\r\ndo')">Load test words</button>
 <button onclick="location.href = './words'">To words page</button>
-<button onclick="sendWords('./addWord')">Prepare file to download</button>
-<a id="download_link" download="my_exported_file.csv" href="">Download as CSV File</a>
+<button onclick="sendTestWords('./addWord')">Prepare file to download</button>
+<a id="download_link" download="vocabulary.csv" href="">Download as CSV File</a>
 </body>
 </html>

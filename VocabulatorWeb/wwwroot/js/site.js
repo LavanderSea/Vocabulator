@@ -32,11 +32,15 @@ async function setDictionaryType(url, type) {
     await sendRequest(url + "setDictionaryType", "PUT", type);
 }
 
-async function sendWords(url) {
-    const word =
+async function sendTestWords(url) {
+    const words =
         "[{\"value\": \"soap\",\"partOfSpeech\": \"noun\",\"transcription\": \"ˈsōp\",\"definition\": \"test def\",\"example\": \"test example\"}" +
-            ",{\"value\": \"HORSE\",\"partOfSpeech\": \"HORSE\",\"transcription\": \"ˈsōp\",\"definition\": \"test def1\",\"example\": \"test example1\"}]";
-    const text = await sendRequest(url, "POST", word);
+        ",{\"value\": \"HORSE\",\"partOfSpeech\": \"HORSE\",\"transcription\": \"ˈsōp\",\"definition\": \"test def1\",\"example\": \"test example1\"}]";
+    sendWords(url, words);
+}
+
+async function sendWords(url, words) {
+    const text = await sendRequest(url, "POST", words);
     prepareFileToDownload(text);
 }
 
@@ -47,4 +51,25 @@ function prepareFileToDownload(text) {
     document.getElementById("download_link").href = url;
 }
 
+function loadOtherFields(j, i, partsOfSpeech, examples) {
+    if (j > -1) {
+        const html = toHtml(examples[j]);
+        document.getElementById(i + "_pof").innerText = partsOfSpeech[j];
+        document.getElementById(i + "_examples").innerHTML = html;
+    } else {
+        document.getElementById(i + "_pof").innerText = "";
+        document.getElementById(i + "_examples").innerHTML = "";
+    }
+}
 
+function toHtml(examples) {
+    var html = "";
+    if (examples.length > 0) {
+
+        for (let i = 0; i < examples.length; i++) {
+            html = html + `<option>${examples[i]}</option>`;
+        }
+        html = `<select>${html}</select>`;
+    }
+    return html;
+}

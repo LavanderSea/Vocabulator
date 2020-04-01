@@ -28,7 +28,7 @@ namespace VocabulatorLibrary.Dictionaries.Stub
                 new WordDto("ˈsōp",
                     new[]
                     {
-                        new Result("substance", Array.Empty<string>(), "noun"),
+                        new Result("substance", new List<string> {"first", "second"}, "noun"),
                         new Result("a salt of a fatty acid", Array.Empty<string>(), "noun"),
                         new Result("soap opera", Array.Empty<string>(), "noun"),
                         new Result("to rub soap over or into", Array.Empty<string>(), "verb")
