@@ -40,6 +40,7 @@ namespace VocabulatorLibrary
         public string ToCsv(IEnumerable<Word> words)
         {
             var sb = new StringBuilder();
+            sb.AppendLine("Value, Part of speech, Transcription, Definition, Example");
             foreach (var word in words)
             {
                 sb.AppendLine(

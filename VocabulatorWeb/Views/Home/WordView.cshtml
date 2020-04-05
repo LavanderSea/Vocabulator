@@ -9,38 +9,40 @@
 </head>
 <body>
 <script src="~/js/site.js"></script>
-@{
+@if (Model != null)
+{
     var i = 0;
 
     <table>
+
         @foreach (var dto in Model)
         {
             i++;
+            var wordId = i + "_word";
+            var pronId = i + "_pronId";
             var examplesId = i + "_examples";
             var defId = i + "_def";
             var pofId = i + "_pof";
 
             @if (dto is WordDto word)
              {
-                 var j = 0;
                  var partsOfSpeech = word.Results.Select(result => result.PartOfSpeech).ToArray();
                  var examples = word.Results.Select(result => result.Examples).ToArray();
                  <tr>
-                     <td>@word.Word</td>
-                     <td>@word.Pronunciation</td>
+                     <td id=@wordId>@word.Word</td>
+                     <td id=@pronId>@word.Pronunciation</td>
+                     <td id=@pofId></td>
                      <td>
                          @{
-                             <select id=@defId onchange='loadOtherFields(this.value, @i, @Html.Raw(Json.Serialize(partsOfSpeech)), @Html.Raw(Json.Serialize(examples)))'>
-                                 <option value=-1></option>
+                             <select id=@defId onchange='loadOtherFields(this.selectedIndex, @i, @Html.Raw(Json.Serialize(partsOfSpeech)), @Html.Raw(Json.Serialize(examples)))'>
+                                 <option></option>
                                  @foreach (var def in word.Results)
                                  {
-                                     <option value=@j>@def.Definition</option>
-                                     j++;
+                                     <option>@def.Definition</option>
                                  }
                              </select>
                          }
                      </td>
-                     <td id=@pofId></td>
                      <td id=@examplesId></td>
                  </tr>
              }
@@ -50,6 +52,13 @@
             }
         }
     </table>
+    <button onclick="sendWords('../addWord', getAllValues(@i))">Finish</button>
+    <a id="download_link" download="vocabulary.csv" href="">Download as CSV File</a>
 }
+else
+{
+    <p>Words didn't find. Please, return to previous page</p>
+}
+
 </body>
 </html>
