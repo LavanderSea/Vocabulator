@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace VocabulatorLibrary.Data
 {
@@ -17,7 +18,7 @@ namespace VocabulatorLibrary.Data
         protected bool Equals(Result other)
         {
             return string.Equals(Definition, other.Definition) && 
-                   Examples.Equals(other.Examples) &&
+                   Examples.SequenceEqual(other.Examples) &&
                    string.Equals(PartOfSpeech, other.PartOfSpeech);
         }
 

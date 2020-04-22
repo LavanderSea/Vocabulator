@@ -6,7 +6,7 @@ namespace VocabulatorWeb
     public class UserFacadeFactory
     {
         private readonly Dictionary<DictionaryVersion, UserFacade> _facades;
-        private DictionaryVersion _type;
+        public DictionaryVersion Type { private set; get; }
 
         public UserFacadeFactory(Dictionary<DictionaryVersion, UserFacade> facades)
         {
@@ -15,7 +15,7 @@ namespace VocabulatorWeb
 
         public void SetType(string type)
         {
-            _type = type switch
+            Type = type switch
                 {
                 "mw" => DictionaryVersion.MerriamWebster,
                 "wa" => DictionaryVersion.WordApi,
@@ -25,7 +25,7 @@ namespace VocabulatorWeb
 
         public UserFacade Create()
         {
-            return Create(_type);
+            return Create(Type);
         }
 
         public UserFacade Create(DictionaryVersion type)

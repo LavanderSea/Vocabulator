@@ -50,6 +50,13 @@ namespace VocabulatorLibrary
             return sb.ToString();
         }
 
+        public bool IsWordsCorrect(string words)
+        {
+            var acceptedSymbols = new[] {'\'', '-', '\r', '\n', ' '};
+            
+            return words.All(symbol => char.IsLetter(symbol) && symbol < 'z' || acceptedSymbols.Contains(symbol));
+        }
+
         public void SaveWords(IEnumerable<string> words)
         {
             _words = words;
